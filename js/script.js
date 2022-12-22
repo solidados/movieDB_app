@@ -1,118 +1,77 @@
-// "use strict";
+// * --- Task-6(1)
+document.addEventListener('DOMContentLoaded', () => {
 
-const personalMovieDB = {
-    count: 0,
-    movies: {},
-    actors: {},
-    genres: [],
-    private: false,
+    "use strict";
 
-    start: () => {
-        personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    const movieDB = {
+        movies: [
+            "Шерлок Холмс и доктор Ватсон",
+            "Корабль-призрак",
+            "Ла-ла лэнд",
+            "Скотт Пилигрим против...",
+            "Одержимость",
+        ]
+    };
 
-        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-            personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
-        }
-    },
+    // ! --- Main events handler ->
+    const adv = document.querySelectorAll('.promo__adv img'),
+        poster = document.querySelector('.promo__bg'),
+        genre = poster.querySelector('.promo__genre'),
+        movieList = document.querySelector('.promo__interactive-list'),
 
-    rememberMyFilms: () => {
-        for (let i = 0; i < 2; i++) {
-            const a = prompt('Один из последних просмотренных фильмов?', '').trim(),
-                b = prompt("На сколько оцените его?").trim();
+        // * --- Task-6(1, 4, 5)
+        addForm = document.querySelector('form.add'),
+        addInput = addForm.querySelector('.adding__input'),
+        checkbox = addForm.querySelector('[type="checkbox"]');
 
-            if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-                personalMovieDB.movies[a] = b;
-                console.log('done');
-            } else {
-                console.log('Error');
-                i--;
-            }
-        }
-    },
+    addForm.addEventListener('submit', (event) => {
+        // ! -- Important: this is to prevent page reload ->
+        event.preventDefault();
 
-    detectPersonalLevel: () => {
-        if (personalMovieDB.count < 10) {
-            console.log("Просмотрено довольно мало фильмов");
-        } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-            console.log("Вы классический зритель");
-        } else if (personalMovieDB.count >= 30) {
-            console.log("Вы - киноман!");
-        } else {
-            console.log("Произошла ошибка");
-        }
-    },
+        const newFilm = addInput.value;
+        const favorite = checkbox.checked;
 
-    showMyDB: (hidden) => {
-        if (!hidden) console.log(personalMovieDB);
-    },
+        movieDB.movies.push(newFilm);
+        sortArr(movieDB.movies);
+    });
 
-    toggleVisibleMyDB: () => {
-        if (personalMovieDB.private) {
-            personalMovieDB.private = false;
-        } else {
-            personalMovieDB.private = true;
-        }
-    },
 
-    writeYourGenres: () => {
-        for (let i = 1; i < 2; i++) {
-            // ! --- Variant 1 ---
-            /* let genre = prompt(`Ваш любимый жанр под номером ${i}`, '').trim();
+    // ? -- Function to delete advertizing
+    const deleteAdv = (arr) => {
+        arr.forEach(item => {
+            item.remove();
+        });
+    };
 
-            if (genre === '' || genre == null) {
-                console.log('Вы ввели некорректные данные, или не ввели их вообще');
-                i--;
-            } else {
-                personalMovieDB.genres[i - 1] = genre;
-            } */
-            // ! --- Variant 2 ---
-            let genres = prompt(`Введите ваши любимые жанры через запятую`, '').toLowerCase().trim();
 
-            if (genres === '' || genres == null) {
-                console.log('Вы ввели некорректные данные, или не ввели их вообще');
-                i--;
-            } else {
-                personalMovieDB.genres = genres.split(', ').sort();
-            }
-        }
+    const makeChanges = () => {
+        genre.textContent = 'драма';
+        poster.style.backgroundImage = "url('img/bg.jpg')";
+    };
 
-        personalMovieDB.genres.forEach((item, i) => {
-            console.log(`Любимый жанр ${i + 1} - это ${item}`);
+
+    const sortArr = (arr) => {
+        arr.sort();
+    };
+
+
+    function createMovieList(films, parent) {
+        parent.innerHTML = '';
+
+        films.forEach((film, i) => {
+            parent.innerHTML += `
+                <li class="promo__interactive-item">${i + 1}. ${film}
+                    <div class="delete"></div>
+                </li>
+            `;
         });
     }
-};
 
-const movieDB = {
-    movies: [
-        "Шерлок Холмс и доктор Ватсон",
-        "Корабль-призрак",
-        "Ла-ла лэнд",
-        "Скотт Пилигрим против...",
-        "Одержимость",
-    ]
-};
+    deleteAdv(adv);
+    makeChanges();
+    sortArr(movieDB.movies);
+    createMovieList(movieDB.movies, movieList);
 
-const adv = document.querySelectorAll('.promo__adv img'),
-    poster = document.querySelector('.promo__bg'),
-    genre = poster.querySelector('.promo__genre');
-movieList = document.querySelector('.promo__interactive-list');
-
-adv.forEach(item => {
-    item.remove();
-});
-
-genre.textContent = 'драма';
-poster.style.backgroundImage = "url('img/bg.jpg')";
-
-// ?
-movieList.innerHTML = '';
-movieDB.movies.sort();
-movieDB.movies.forEach((film, i) => {
-    movieList.innerHTML += `
-        <li class="promo__interactive-item">${i + 1}. ${film}
-            <div class="delete"></div>
-        </li>
-    `;
 });
 
 
