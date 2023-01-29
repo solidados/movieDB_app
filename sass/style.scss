@@ -12,6 +12,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         height: 100%;
         width: 300px;
         background: #ffd500;
@@ -21,14 +22,16 @@
             height: 30px;
             input {
                 width: 100%;
+                padding-bottom: 5px;
+
                 border: none;
                 border-bottom: 2px solid #fff;
                 background-color: transparent;
-                color: #fff;
+                outline: none;
+
                 font-size: 24px;
                 line-height: 28px;
-                padding-bottom: 5px;
-                outline: none;
+                color: #fff;
                 &::placeholder {
                     color: #fff;
                 }
@@ -39,9 +42,11 @@
                 position: absolute;
                 top: 2px;
                 right: 10px;
-                background: url("../icons/search.svg") center (center / cover) no-repeat;
+
                 width: 24px;
                 height: 24px;
+
+                background: url("../icons/search.svg") center (center / cover) no-repeat;
             }
         }
     }
@@ -49,6 +54,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         height: 100%;
         width: calc(100% - 360px);
     }
@@ -60,17 +66,21 @@
     &__menu {
         width: 300px;
         height: 100%;
-        background: #212121;
         padding: 60px 0 0 10px;
+
+        background: #212121;
         &-item {
             display: block;
+
+            padding-left: 40px;
+            margin-top: 18px;
+
+            text-decoration: none;
+
+            font-weight: 300;
             font-size: 28px;
             line-height: 33px;
             color: #d6d9dc;
-            text-decoration: none;
-            font-weight: 300;
-            padding-left: 40px;
-            margin-top: 18px;
             &:hover {
                 color: #ffd500;
             }
@@ -85,9 +95,10 @@
     }
     &__bg {
         height: 360px;
+        padding: 107px 0 0 61px;
+
         background: url("../img/mars.webp") center (center / cover) no-repeat;
         background-position: top;
-        padding: 107px 0 0 61px;
     }
     &__genre {
         font-weight: 300;
@@ -105,6 +116,7 @@
     }
     &__descr {
         width: 481px;
+
         font-weight: 300;
         font-size: 18px;
         line-height: 21px;
@@ -114,11 +126,12 @@
     &__ratings {
         margin-top: 13px;
         span {
+            margin-right: 25px;
+
             font-weight: 400;
             font-size: 18px;
             line-height: 21px;
             color: #f8db4a;
-            margin-right: 25px;
         }
     }
     &__interactive {
@@ -129,6 +142,7 @@
         }
         &-title {
             display: inline-block;
+
             font-weight: bold;
             font-size: 24px;
             line-height: 28px;
@@ -142,39 +156,47 @@
             }
         }
         &-list {
-            list-style-type: none;
-            margin-top: 35px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+
+            margin-top: 35px;
+            list-style-type: none;
         }
         &-item {
             display: inline-block;
             position: relative;
+
+            margin-bottom: 15px;
+            padding-right: 40px;
+
             font-weight: 300;
             font-size: 20px;
             line-height: 18px;
             color: #000000;
-            margin-bottom: 15px;
-            padding-right: 40px;
             text-transform: uppercase;
             span {
                 display: block;
                 position: absolute;
                 left: -30px;
                 top: 50%;
+
                 transform: translateY(-50%);
+
                 width: 20px;
                 height: 20px;
+
                 background: url("../icons/Star.svg") center (center / cover) no-repeat;
             }
             &:before {
                 content: "";
+                display: block;
                 position: absolute;
                 bottom: -5px;
-                display: block;
+
                 width: calc(100% - 40px);
                 height: 2px;
+
                 background-color: #ffd500;
             }
             &:hover {
@@ -184,9 +206,12 @@
                     position: absolute;
                     right: 0px;
                     top: 50%;
+
                     transform: translateY(-50%);
+
                     width: 20px;
                     height: 20px;
+
                     background: url("../icons/trash.png") center (center / cover) no-repeat;
                     cursor: pointer;
                 }
@@ -199,6 +224,7 @@
             label {
                 display: block;
                 margin: 10px 0;
+
                 font-weight: bold;
                 font-size: 16px;
                 line-height: 16px;
@@ -211,13 +237,15 @@
             input[type="text"] {
                 width: 270px;
                 height: 45px;
-                line-height: 50px;
-                font-size: 16px;
+                padding: 0 15px;
+
                 background: rgba(196, 196, 196, 0.29);
                 border: 1px solid rgba(0, 0, 0, 0.19);
-                padding: 0 15px;
-                outline: none;
                 border-radius: 4px;
+                outline: none;
+
+                font-size: 16px;
+                line-height: 50px;
                 &::placeholder {
                     font-weight: 300;
                     font-size: 16px;
@@ -226,16 +254,19 @@
             }
             button {
                 display: block;
-                margin-top: 15px;
                 width: 170px;
                 height: 45px;
+                margin-top: 15px;
+
                 background: #ffd500;
+
+                border: none;
+                outline: none;
+
                 font-weight: 500;
                 font-size: 18px;
                 line-height: 1.4;
                 color: #ffffff;
-                border: none;
-                outline: none;
                 cursor: pointer;
                 &:active {
                     transform: scale(0.95);
@@ -244,16 +275,18 @@
         }
     }
     &__adv {
-        background: #212121;
         width: 300px;
         height: 100%;
+        background: #212121;
         &-title {
+            margin: 20px 0;
+
+            text-align: center;
+
             font-weight: bold;
             font-size: 18px;
             line-height: 21px;
             color: #ffd500;
-            margin: 20px 0;
-            text-align: center;
         }
         img {
             width: 100%;
