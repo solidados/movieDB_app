@@ -125,6 +125,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function createMovieList(films, parent) {
     parent.innerHTML = '';
+    sortArr(films);
 
     films.forEach((film, i) => {
       parent.innerHTML += `
@@ -138,14 +139,12 @@ window.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', () => {
         btn.parentElement.remove();
         movieDB.movies.splice(i, 1);
-        createMovieList(movieDB.movies, movieList)
+        createMovieList(films, parent)
       })
     })
   }
 
   deleteAdv(adv);
   makeChanages();
-  sortArr(movieDB.movies);
   createMovieList(movieDB.movies, movieList);
-
 })
