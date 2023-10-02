@@ -133,6 +133,14 @@ window.addEventListener('DOMContentLoaded', () => {
       </li>
       `;
     });
+
+    document.querySelectorAll('.delete').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.remove();
+        movieDB.movies.splice(i, 1);
+        createMovieList(movieDB.movies, movieList)
+      })
+    })
   }
 
   deleteAdv(adv);
