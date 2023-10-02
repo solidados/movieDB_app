@@ -101,6 +101,11 @@ window.addEventListener('DOMContentLoaded', () => {
       if (newFilm.length > 21) {
         newFilm = `${newFilm.substring(0, 22)}...`
       }
+
+      if (favorite) {
+        alert('Movie marked as Favorite')
+      }
+
       movieDB.movies.push(newFilm);
       sortArr(movieDB.movies);
 
